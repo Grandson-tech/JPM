@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Gospel Power Ministries - Branch Locations</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            background-color: #2936ce;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        
+        .content {
+            display: flex;
+            flex: 1;
+        }
+        
+        .map-container {
+            flex: 2;
+            height: calc(100vh - 60px);
+        }
+        
+        #kenya-map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .branches-list {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+        }
+        
+        .pastor-section {
+            margin-bottom: 25px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .pastor-name {
+            font-weight: bold;
+            color: #2936ce;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .branch-item {
+            margin-left: 20px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        .branch-item:before {
+            content: "•";
+            color: #2936ce;
+            position: absolute;
+            left: -15px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            .map-container {
+                height: 50vh;
+            }
+        }
+        
+        /* Custom marker style */
+        .custom-marker {
+            background-color: #e74c3c;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Jesus Gospel Power Ministries - Branch Locations</h1>
+    </div>
+    
+    <div class="content">
+        <div class="map-container">
+            <div id="kenya-map"></div>
+        </div>
+        
+        <div class="branches-list">
+            <h2>Church Branches & Pastors</h2>
+            
+            <!-- Rev. Peter Kones -->
+            <div class="pastor-section">
+                <div class="pastor-name">1. Rev. Peter Kones</div>
+                <div class="branch-item">Jerusalem JGPM Bomet</div>
+                <div class="branch-item">Berea JGPM Bomet</div>
+                <div class="branch-item">JGPM Mulot-Bomet</div>
+            </div>
+            
+            <!-- Rev. Kenobi -->
+            <div class="pastor-section">
+                <div class="pastor-name">2. Rev. Kemboi</div>
+                <div class="branch-item">Jesus Gospel Power Pioneer</div>
+                <div class="branch-item">JGPM Annex</div>
+                <div class="branch-item">JGPM lugari</div>
+                <div class="branch-item">JGPM Nzoia</div>
+                <div class="branch-item">JGPM Timboroa Lodwar</div>
+                <div class="branch-item">JGPM Kaaman kemer</div>
+                <div class="branch-item">JGPM Kampi mpya</div>
+                <div class="branch-item">JGPM Lokori</div>
+            </div>
+            
+            <!-- Rev. Koch Henry -->
+            <div class="pastor-section">
+                <div class="pastor-name">3. Rev. Koch Henry</div>
+                <div class="branch-item">Mauche town Church</div>
+                <div class="branch-item">Teret town church</div>
+                <div class="branch-item">Mai Mahiu church</div>
+            </div>
+            
+            <!-- Rev. Mbagga -->
+            <div class="pastor-section">
+                <div class="pastor-name">4. Rev. Mbugua</div>
+                <div class="branch-item">JGPM OlChoro</div>
+                <div class="branch-item">JGPM Kaploret</div>
+                <div class="branch-item">JGPM Oldanyi</div>
+                <div class="branch-item">JGPM Motonyi</div>
+                <div class="branch-item">JGPM koitamugul</div>
+                <div class="branch-item">JGPM Kapkatet</div>
+                <div class="branch-item">JGPM Kilanda</div>
+            </div>
+            
+            <!-- Rev. Güenga -->
+            <div class="pastor-section">
+                <div class="pastor-name">5. Rev. Gitonga</div>
+                <div class="branch-item">JGPM Mbaranga</div>
+                <div class="branch-item">JGPM Kiithe</div>
+                <div class="branch-item">JGPM Achoro</div>
+                <div class="branch-item">JGPM Karama</div>
+                <div class="branch-item">JGPM Mwontiri</div>
+                <div class="branch-item">JGPM Kınoro</div>
+            </div>
+            
+            <!-- Rev. Ştiinc -->
+            <div class="pastor-section">
+                <div class="pastor-name">6. Rev. Seline</div>
+                <div class="branch-item">JGPM Kımori</div>
+                <div class="branch-item">JGPM Mogonjet</div>
+                <div class="branch-item">JGPM Tırgaga</div>
+                <div class="branch-item">JGPM Kobel</div>
+                <div class="branch-item">JGPM Kapkoros</div>
+                <div class="branch-item">JGPM Kenegut</div>
+                <div class="branch-item">JGPM Keionget</div>
+                <div class="branch-item">JGPM Kaplele</div>
+                <div class="branch-item">JGPM Kamoguso</div>
+                <div class="branch-item">JGPM Chepseon</div>
+                <div class="branch-item">JGPM Kapsusei</div>
+                <div class="branch-item">JGPM Kuresoi</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on Kenya
+        const map = L.map('kenya-map').setView([0.0236, 37.9062], 6);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Custom marker icon
+        const redMarker = L.divIcon({
+            className: 'custom-marker',
+            iconSize: [20, 20]
+        });
+        
+        // Approximate coordinates for branches (you should replace these with actual coordinates)
+        const branchLocations = [
+            // Rev. Peter Kones branches
+            { lat: -1.2921, lng: 36.8219 },  // Jerusalem Tapm Barnet (Nairobi)
+            { lat: -0.3031, lng: 36.0800 },  // Berea Tapm Barnet (Nakuru)
+            { lat: -0.4167, lng: 36.9500 },  // Kam mwar-Barnet (Nyandarua)
+            
+            // Rev. Kenobi branches
+            { lat: -1.2865, lng: 36.8172 },  // Jesus Gospel Power Pioneer (Nairobi)
+            { lat: -1.3000, lng: 36.8500 },  // Tapm annex (Nairobi)
+            { lat: -1.2500, lng: 36.8000 },  // Tapm lugai (Nairobi)
+            { lat: -1.2700, lng: 36.8200 },  // Tapm Nizola (Nairobi)
+            { lat: -1.2800, lng: 36.8300 },  // Tapm Timokuroq kodkhar (Nairobi)
+            { lat: -1.2900, lng: 36.8400 },  // Jamma kaaman kemer (Nairobi)
+            { lat: -1.3100, lng: 36.8600 },  // Jamma kampi mga (Nairobi)
+            { lat: -1.3200, lng: 36.8700 },  // Tapm towni (Nairobi)
+            
+            // Rev. Koch Henry branches
+            { lat: 0.5167, lng: 35.2833 },   // Mawbe town Church (Eldoret)
+            { lat: 0.5100, lng: 35.2900 },   // Teret town church (Eldoret)
+            { lat: 0.5200, lng: 35.3000 },   // Ma Mahu church (Eldoret)
+            
+            // Rev. Mbagga branches
+            { lat: -0.1000, lng: 34.7500 },   // IGM? O'Chero (Kisumu)
+            { lat: -0.1100, lng: 34.7600 },   // JGIM! Kapılıcıt (Kisumu)
+            { lat: -0.1200, lng: 34.7700 },   // u Öl danyi (Kisumu)
+            { lat: -0.1300, lng: 34.7800 },   // u Materyi (Kisumu)
+            { lat: -0.1400, lng: 34.7900 },   // u Kalamışgı (Kisumu)
+            { lat: -0.1500, lng: 34.8000 },   // u Kapıkalet (Kisumu)
+            { lat: -0.1600, lng: 34.8100 },   // u Kulanda (Kisumu)
+            
+            // Rev. Güenga branches
+            { lat: -4.0500, lng: 39.6667 },   // IGPM Mbarenga (Mombasa)
+            { lat: -4.0600, lng: 39.6700 },   // u Kirilte (Mombasa)
+            { lat: -4.0700, lng: 39.6800 },   // u Achara (Mombasa)
+            { lat: -4.0800, lng: 39.6900 },   // u Karamo (Mombasa)
+            { lat: -4.0900, lng: 39.7000 },   // u Makanini (Mombasa)
+            { lat: -4.1000, lng: 39.7100 },   // u Kınaro (Mombasa)
+            
+            // Rev. Ştiinc branches
+            { lat: 0.5167, lng: 35.2833 },    // IGPM Kımari (Eldoret)
+            { lat: 0.5200, lng: 35.2900 },    // u Magajçet (Eldoret)
+            { lat: 0.5300, lng: 35.3000 },    // u Tırgaya (Eldoret)
+            { lat: 0.5400, lng: 35.3100 },    // u Kabet (Eldoret)
+            { lat: 0.5500, lng: 35.3200 },    // u Kapıkmas (Eldoret)
+            { lat: 0.5600, lng: 35.3300 },    // u Kenegui (Eldoret)
+            { lat: 0.5700, lng: 35.3400 },    // u Keionget (Eldoret)
+            { lat: 0.5800, lng: 35.3500 },    // u Kapıcıc (Eldoret)
+            { lat: 0.5900, lng: 35.3600 },    // u Kamagaso (Eldoret)
+            { lat: 0.6000, lng: 35.3700 },    // u Chepason (Eldoret)
+            { lat: 0.6100, lng: 35.3800 },    // u Kapısacı (Eldoret)
+            { lat: 0.6200, lng: 35.3900 }     // u Kuregui (Eldoret)
+        ];
+        
+        // Add markers to the map
+        branchLocations.forEach(location => {
+            L.marker([location.lat, location.lng], { icon: redMarker }).addTo(map);
+        });
+        
+        // Add Kenya boundary overlay (optional)
+        fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries/KEN.geo.json')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: {
+                        color: '#2936ce',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.1
+                    }
+                }).addTo(map);
+            });
+    </script>
+</body>
+</html>
